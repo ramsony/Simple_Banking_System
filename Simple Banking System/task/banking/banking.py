@@ -24,15 +24,17 @@ def pin_number():
     return pin
 
 
-check = True
-
-while check:
-    print('1. Create account\n', '2. Log into account\n', '0. Exit')
+while True:
+    print('1. Create account')
+    print('2. Log into account')
+    print('0. Exit')
     choice = input()
     if choice == '1':
         print('Your card has been created')
-        print('Your card number:\n', card_number())
-        print('Your card PIN:\n', pin_number())
+        print('Your card number:')
+        print(card_number())
+        print('Your card PIN:')
+        print(pin_number())
     if choice == '2':
         card_no = input('Enter your card number:')
         pin_no = input('Enter your PIN:')
@@ -42,7 +44,9 @@ while check:
             print('You have successfully logged in!')
             check2 = True
             while check2:
-                print('1.Balance\n', '2.Log out\n', '0.Exit')
+                print('1.Balance')
+                print('2.Log out')
+                print('0.Exit')
                 choice2 = input()
                 if choice2 == '1':
                     print('Balance: 0')
@@ -50,8 +54,8 @@ while check:
                     print('You have successfully logged out!')
                     check2 = False
                 if choice2 == '0':
-                    check2 = False
-
+                    print('Bye!')
+                    exit()
     if choice == '0':
         print('Bye!')
-        check = False
+        break
