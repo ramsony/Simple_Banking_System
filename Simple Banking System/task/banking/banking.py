@@ -42,42 +42,46 @@ class BankSystem:
     def __init__(self):
         self.credit_card = {}
 
+    def main(self):
+        while True:
+            print('1. Create account')
+            print('2. Log into account')
+            print('0. Exit')
+            choice_menu_1 = input()
+            if choice_menu_1 == '1':
+                card_no = generate_card_number()
+                pin_no = generate_pin_number()
+                self.credit_card[card_no] = pin_no
+                print('Your card has been created')
+                print('Your card number:')
+                print(card_no)
+                print('Your card PIN:')
+                print(pin_no)
+            if choice_menu_1 == '2':
+                card = input('Enter your card number:')
+                pin = input('Enter your PIN:')
+                if (card, pin) in self.credit_card.items():
+                    print('You have successfully logged in!')
+                    while True:
+                        print('1.Balance')
+                        print('2.Log out')
+                        print('0.Exit')
+                        menu_choice_2 = input()
+                        if menu_choice_2 == '1':
+                            print('Balance: 0')
+                        if menu_choice_2 == '2':
+                            print('You have successfully logged out!')
+                            break
+                        if menu_choice_2 == '0':
+                            print('Bye!')
+                            exit()
+                else:
+                    print('Wrong card number or PIN!')
+            if choice_menu_1 == '0':
+                print('Bye!')
+                break
+
 
 bs = BankSystem()
-while True:
-    print('1. Create account')
-    print('2. Log into account')
-    print('0. Exit')
-    choice_menu_1 = input()
-    if choice_menu_1 == '1':
-        card_no = generate_card_number()
-        pin_no = generate_pin_number()
-        bs.credit_card[card_no] = pin_no
-        print('Your card has been created')
-        print('Your card number:')
-        print(card_no)
-        print('Your card PIN:')
-        print(pin_no)
-    if choice_menu_1 == '2':
-        card = input('Enter your card number:')
-        pin = input('Enter your PIN:')
-        if (card, pin) in bs.credit_card.items():
-            print('You have successfully logged in!')
-            while True:
-                print('1.Balance')
-                print('2.Log out')
-                print('0.Exit')
-                menu_choice_2 = input()
-                if menu_choice_2 == '1':
-                    print('Balance: 0')
-                if menu_choice_2 == '2':
-                    print('You have successfully logged out!')
-                    break
-                if menu_choice_2 == '0':
-                    print('Bye!')
-                    exit()
-        else:
-            print('Wrong card number or PIN!')
-    if choice_menu_1 == '0':
-        print('Bye!')
-        break
+bs.main()
+
